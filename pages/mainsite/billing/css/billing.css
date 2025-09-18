@@ -1,0 +1,137 @@
+/* billing.css - Billing Page Specific Styles */
+
+/* Construction Section */
+#construction {
+    background: var(--secondary-black);
+    border-radius: var(--border-radius);
+    margin: 2rem 0;
+}
+
+.construction-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.construction-container h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--text-white);
+    margin-bottom: 2rem;
+}
+
+.construction-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.construction-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+.construction-content p {
+    font-size: 1.1rem;
+    color: var(--light-gray);
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.construction-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--tertiary-black);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-gray);
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    border-color: var(--text-white);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.feature-item span:last-child {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+    text-transform: lowercase;
+}
+
+.construction-note {
+    font-size: 1rem !important;
+    margin-top: 1rem;
+}
+
+.construction-note a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.construction-note a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .construction-container {
+        padding: 3rem 1rem;
+    }
+    
+    .construction-container h2 {
+        font-size: 2rem;
+    }
+    
+    .construction-features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .construction-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .construction-content p {
+        font-size: 1rem;
+    }
+}

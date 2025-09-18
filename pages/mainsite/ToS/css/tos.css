@@ -1,0 +1,179 @@
+/* tos.css - Terms of Service Page Specific Styles */
+
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+#hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    color: var(--light-gray);
+    margin-bottom: 0.5rem;
+}
+
+.last-updated {
+    font-size: 1rem !important;
+    color: var(--accent-green) !important;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Terms Content */
+#terms-content {
+    background: var(--tertiary-black);
+    border-radius: var(--border-radius);
+    margin: 2rem 0;
+}
+
+.terms-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.terms-container h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.terms-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--accent-gray);
+}
+
+.terms-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.terms-section h3 {
+    color: var(--text-white);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.terms-section p {
+    color: var(--light-gray);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.terms-section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.terms-section li {
+    color: var(--light-gray);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.terms-section a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.terms-section a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* Table of Contents (if needed) */
+.toc {
+    background: var(--secondary-black);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--accent-gray);
+}
+
+.toc h3 {
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc li {
+    margin-bottom: 0.5rem;
+}
+
+.toc a {
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
+    padding: 0.25rem 0;
+}
+
+.toc a:hover {
+    color: var(--text-white);
+    padding-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terms-container {
+        padding: 2rem 1rem;
+    }
+    
+    .terms-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .terms-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .terms-section p {
+        font-size: 0.95rem;
+    }
+    
+    .terms-section ul {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero {
+        padding: 3rem 1rem;
+    }
+    
+    .terms-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .terms-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .terms-section p {
+        font-size: 0.9rem;
+    }
+    
+    .terms-section ul {
+        padding-left: 1rem;
+    }
+}
