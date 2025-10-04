@@ -1,0 +1,277 @@
+/* people.css - Team Members Page Specific Styles */
+
+/* ---------- Variables ---------- */
+:root {
+    --bio-bg-color: rgba(17, 17, 17, 0.95);
+    --bio-text-color: var(--text-white);
+    --team-section-padding: 2rem;
+    --person-hover-transform: translateY(-5px);
+}
+
+/* ---------- Page Layout ---------- */
+.team-page {
+    padding: var(--team-section-padding);
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+/* ---------- Header Section ---------- */
+.header-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+    letter-spacing: -0.02em;
+    animation: fadeInUp 1s ease-out;
+}
+
+.team-intro {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--light-gray);
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* ---------- Search Section ---------- */
+.search-section {
+    margin: 2rem 0;
+    text-align: center;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--accent-gray);
+    border-radius: var(--border-radius);
+    background: var(--tertiary-black);
+    color: var(--text-white);
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+/* ---------- Team Categories ---------- */
+.category {
+    margin: 3rem 0;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    transition: opacity var(--transition);
+}
+
+.category h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--text-white);
+    border-bottom: 2px solid var(--accent-gray);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.category ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.category li {
+    background: var(--secondary-black);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-gray);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.category li:hover {
+    transform: var(--person-hover-transform);
+    border-color: var(--accent-green);
+    background: rgba(0, 255, 136, 0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Team Member Cards ---------- */
+.person {
+    text-align: center;
+}
+
+.person-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: block;
+    border: 3px solid var(--accent-green);
+    transition: transform var(--transition);
+}
+
+.person:hover .person-image {
+    transform: scale(1.1);
+}
+
+.person-name {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.person-title {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+    margin-bottom: 0.5rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.project-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    background: var(--tertiary-black);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+    transition: var(--transition);
+}
+
+.project-tag:hover {
+    background: var(--accent-green);
+    color: var(--primary-black);
+}
+
+/* ---------- Bio Section ---------- */
+.bio {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 90%;
+    background: var(--bio-bg-color);
+    color: var(--bio-text-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.bio.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.bio-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.bio-overlay.show {
+    display: block;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 1024px) {
+    .category ul {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .team-page {
+        padding: 1.5rem;
+    }
+
+    .category ul {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+
+    .person-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .bio {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-page {
+        padding: 1rem;
+    }
+
+    .category h2 {
+        font-size: 1.5rem;
+    }
+
+    .search-bar input {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .category ul {
+        grid-template-columns: 1fr;
+    }
+}

@@ -28,13 +28,17 @@
 #terms-content {
     background: var(--tertiary-black);
     border-radius: var(--border-radius);
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: var(--content-width);
+    width: 100%;
+    padding: 0 2rem;
 }
 
 .terms-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 3rem 2rem;
+    width: 100%;
 }
 
 .terms-container h2 {
@@ -130,6 +134,16 @@
 .toc a:hover {
     color: var(--text-white);
     padding-left: 0.5rem;
+}
+
+/* Page wrapper for proper centering */
+.page-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Responsive Design */

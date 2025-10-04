@@ -64,7 +64,7 @@ function initMobileMenu() {
 }
 
 // Scroll Effects
-function initScrollEffects() {
+ function initScrollEffects() {
     const header = document.getElementById('header');
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -73,7 +73,7 @@ function initScrollEffects() {
         const currentScrollY = window.scrollY;
         
         // Remove all header classes first
-        header.classList.remove('scrolled', 'fade-out', 'at-top');
+       header.classList.remove('scrolled', 'fade-out', 'at-top');
         
         if (currentScrollY === 0) {
             // At the very top
@@ -87,7 +87,7 @@ function initScrollEffects() {
                 header.classList.add('fade-out');
             }
         }
-        
+         
         lastScrollY = currentScrollY;
         ticking = false;
     }
@@ -101,6 +101,7 @@ function initScrollEffects() {
     
     window.addEventListener('scroll', requestTick, { passive: true });
 }
+
 
 // Smooth Scrolling for anchor links
 function initSmoothScrolling() {
@@ -173,7 +174,8 @@ function initNewsletterForm() {
 }
 
 // Store newsletter email in localStorage
-function storeNewsletterEmail(email) {
+//note: this is NOT a safe way to get emails, who ever made this, im gonna find you and hurt you - drkel aka the cyber-security nerd
+/*function storeNewsletterEmail(email) {
     try {
         const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
         const subscriberData = {
@@ -248,6 +250,7 @@ function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+*/
 
 // Notification system
 function showNotification(message, type = 'info') {
