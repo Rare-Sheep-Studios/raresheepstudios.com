@@ -1,148 +1,172 @@
-/* carousel.css */
-.carousel-container {
+/* carousel.css - improved by your friendly neighborhood gremlin 😈 */
+
+/* --- theme variables (tweak these) --- */
+:root{
+  --carousel-gap: 1.5rem;
+  --btn-size: clamp(40px, 4.5vw, 56px);
+  --accent-green: #00ff88;
+  --accent-gray: #9aa0a6;
+  --bg-btn: rgba(34,34,34,0.75);
+  --text-white: #ffffff;
+  --slide-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* --- container --- */
+/*. carousel-container */ 
+{ /*yes this is supposed be broken, ignore.*/
     position: relative;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: visible;
-    padding: 3rem 0;
+    overflow: hidden; /* hide edges */
+    padding: 2rem 1rem; /* internal spacing */
+    box-sizing: border-box; /* everything stays inside */
 }
-
+/*yes i purpolsey fucked the carousel-container, i didn't like the arrows, there is prob a easier method but im lazy af :32*/
+/* IGNORE ALL PROBLEMS UP HERE!!!! THIS IS ON PURPOSE*/
 .carousel-track {
     display: flex;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    gap: 2rem;
-    padding: 2rem 1rem;
-    margin: 0 -1rem;
+    gap: 1.5rem; /* space between slides */
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
     will-change: transform;
+    padding: 0;  /* remove extra padding from before */
+    margin: 0;   /* remove negative margins that broke alignment */
 }
 
 .carousel-slide {
-    min-width: calc(33.333% - 1.33rem); /* Show 3 cards at a time */
-    flex: 0 0 auto;
-    opacity: 0.5;
-    transition: all 0.5s ease;
-    transform: scale(0.95);
+    flex: 0 0 calc((100% - 3rem) / 3); /* 3 slides with gap accounted for */
+    box-sizing: border-box; /* slide width respects padding/gap */
 }
 
-/* Keep the original project card styles but adapt them for carousel */
+
+
+/* card inside slide (preserve your project card design but add polish) */
 .carousel-slide .project-card {
-    height: 100%;
-    margin: 0;
-    transform-origin: center center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
+  height: 100%;
+  margin: 0;
+  transform-origin: center center;
+  transition: transform 0.36s cubic-bezier(.22,.9,.28,1), box-shadow 0.36s ease;
+  box-shadow: var(--slide-shadow);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
+/* active/center slide styling */
 .carousel-slide.active {
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: translateY(-8px) scale(1);
+  z-index: 2;
 }
 
 .carousel-slide.active .project-card {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 42px rgba(0,0,0,0.45);
 }
 
+/* subtle hover/focus for non-active slides */
+.carousel-slide:hover,
+.carousel-slide:focus-within {
+  opacity: 0.9;
+  transform: translateY(-6px) scale(0.985);
+}
+
+/* de-emphasize distant slides to create depth */
+.carousel-slide:not(.active) {
+  filter: grayscale(10%) saturate(90%);
+}
+
+/* --- navigation (prev/next) --- */
 .carousel-navigation {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    left: -2rem;
-    right: -2rem;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none; /* container ignores clicks, buttons will enable */
+  padding: 0 0.5rem;
+  z-index: 10;
 }
 
+/* circular buttons */
 .carousel-button {
-    background: rgba(51, 51, 51, 0.8);
-    color: var(--text-white);
-    border: 1px solid var(--accent-gray);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    pointer-events: auto;
-    backdrop-filter: blur(8px);
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: 999px;
+  background: var(--bg-btn);
+  color: var(--text-white);
+  border: 1px solid var(--accent-gray);
+  cursor: pointer;
+  font-size: clamp(1rem, 2.8vw, 1.6rem);
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
-.carousel-button:hover {
-    background: rgba(0, 255, 136, 0.2);
-    border-color: var(--accent-green);
-    transform: scale(1.1);
+/* left/right alignment helpers */
+.carousel-button.left  { margin-left: 0.5rem; }
+.carousel-button.right { margin-right: 0.5rem; }
+
+.carousel-button:hover,
+.carousel-button:focus {
+  transform: scale(1.08);
+  border-color: var(--accent-green);
+  outline: none;
 }
 
+/* accessible focus ring */
+.carousel-button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(0,255,136,0.12), 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* --- indicators --- */
 .carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
-    position: relative;
-    z-index: 5;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 5;
+  user-select: none;
+  padding: 0 0.5rem;
 }
 
 .carousel-indicator {
-    width: 30px;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--accent-gray);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.5;
+  width: 28px;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--accent-gray);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(.22,.9,.28,1);
+  opacity: 0.48;
 }
 
 .carousel-indicator.active {
-    background: var(--accent-green);
-    opacity: 1;
-    width: 45px;
+  background: var(--accent-green);
+  opacity: 1;
+  width: 44px;
 }
 
-/* Responsive Design */
+/* --- responsive tweaks --- */
 @media (max-width: 1200px) {
-    .carousel-slide {
-        min-width: calc(50% - 1rem); /* Show 2 cards on medium screens */
-    }
-    
-    .carousel-navigation {
-        left: 0;
-        right: 0;
-    }
+  .carousel-slide { flex: 0 0 clamp(240px, 42%, 460px); }
+  .carousel-navigation { padding: 0 0.3rem; }
 }
 
 @media (max-width: 768px) {
-    .carousel-slide {
-        min-width: calc(100% - 2rem); /* Show 1 card on mobile with proper spacing */
-    }
-    
-    .carousel-button {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .carousel-track {
-        padding: 1rem;
-    }
-    
-    .carousel-indicators {
-        gap: 0.5rem;
-    }
-    
-    .carousel-indicator {
-        width: 20px;
-    }
-    
-    .carousel-indicator.active {
-        width: 35px;
-    }
+  .carousel-container { padding: 1rem 0; }
+  .carousel-slide { flex: 0 0 92%; min-height: 220px; }
+  .carousel-indicator { width: 20px; height: 5px; }
+  .carousel-indicator.active { width: 36px; }
+  .carousel-button { width: 44px; height: 44px; font-size: 1.1rem; }
+  .carousel-navigation { top: calc(100% - 56%); } /* nudge nav inward on mobile so it doesn't overlap content as much */
 }

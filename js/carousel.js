@@ -1,165 +1,140 @@
-// carousel.js
-document.addEventListener('DOMContentLoaded', () => {
-    initCarousel();
-});
+// carousel.js - gremlin edition 🐾 + centered slides fix
+document.addEventListener('DOMContentLoaded', () => initCarousel());
 
 function initCarousel() {
     const container = document.querySelector('.carousel-container');
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const track = container.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
     const totalSlides = slides.length;
+
     let currentIndex = 0;
     let startPos = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
     let isDragging = false;
-    
-    // Initialize carousel
-    function setupCarousel() {
-        // Add indicators
-        const indicatorsContainer = document.createElement('div');
-        indicatorsContainer.className = 'carousel-indicators';
-        
-        slides.forEach((_, index) => {
-            const indicator = document.createElement('button');
-            indicator.className = 'carousel-indicator';
-            indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
-            indicator.addEventListener('click', () => goToSlide(index));
-            indicatorsContainer.appendChild(indicator);
-        });
-        
-        // Add navigation buttons
-        const navigation = document.createElement('div');
-        navigation.className = 'carousel-navigation';
-        
-        const prevButton = document.createElement('button');
-        prevButton.className = 'carousel-button prev';
-        prevButton.innerHTML = '←';
-        prevButton.setAttribute('aria-label', 'Previous slide');
-        
-        const nextButton = document.createElement('button');
-        nextButton.className = 'carousel-button next';
-        nextButton.innerHTML = '→';
-        nextButton.setAttribute('aria-label', 'Next slide');
-        
-        navigation.appendChild(prevButton);
-        navigation.appendChild(nextButton);
-        
-        // Append controls to container
-        container.appendChild(navigation);
-        container.appendChild(indicatorsContainer);
-        
-        // Event listeners for buttons
-        prevButton.addEventListener('click', () => navigate('prev'));
-        nextButton.addEventListener('click', () => navigate('next'));
-        
-        // Update indicators
-        updateIndicators();
-        updateSlideClasses();
-    }
-    
+    let animationID;
+
+    // --- indicators ---
+    const indicatorsContainer = document.createElement('div');
+    indicatorsContainer.className = 'carousel-indicators';
+    const indicators = slides.map((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'carousel-indicator';
+        btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        btn.addEventListener('click', () => goToSlide(i));
+        indicatorsContainer.appendChild(btn);
+        return btn;
+    });
+    container.appendChild(indicatorsContainer);
+
+    // --- navigation (hidden) ---
+    const navigation = document.createElement('div');
+    navigation.className = 'carousel-navigation';
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'carousel-button prev';
+    prevBtn.innerHTML = '←';
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'carousel-button next';
+    nextBtn.innerHTML = '→';
+    navigation.append(prevBtn, nextBtn);
+    container.appendChild(navigation);
+    navigation.style.display = 'none'; // hide arrows
+
+    prevBtn.addEventListener('click', () => navigate('prev'));
+    nextBtn.addEventListener('click', () => navigate('next'));
+
+    // --- navigation functions ---
     function navigate(direction) {
-        if (direction === 'next') {
-            currentIndex = currentIndex === totalSlides - 1 ? 0 : currentIndex + 1;
-        } else {
-            currentIndex = currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
-        }
+        currentIndex = direction === 'next'
+            ? (currentIndex + 1) % totalSlides
+            : (currentIndex - 1 + totalSlides) % totalSlides;
         updateCarousel();
     }
-    
+
     function goToSlide(index) {
         currentIndex = index;
         updateCarousel();
     }
-    
+
+    // --- update carousel with centered slide ---
     function updateCarousel() {
-        const slideWidth = slides[0].offsetWidth + 32; // Width + gap
-        currentTranslate = -currentIndex * slideWidth;
+        const containerWidth = container.offsetWidth;
+        const trackGap = parseFloat(getComputedStyle(track).gap || 0);
+
+        const activeSlide = slides[currentIndex];
+        const slideCenter = activeSlide.offsetLeft + activeSlide.offsetWidth / 2;
+        const translate = slideCenter - containerWidth / 2;
+
+        currentTranslate = -translate;
+        prevTranslate = currentTranslate;
+
+        track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
         track.style.transform = `translateX(${currentTranslate}px)`;
-        updateIndicators();
-        updateSlideClasses();
+
+        slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+        indicators.forEach((i, idx) => i.classList.toggle('active', idx === currentIndex));
     }
-    
-    function updateIndicators() {
-        const indicators = document.querySelectorAll('.carousel-indicator');
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    function updateSlideClasses() {
-        slides.forEach((slide, index) => {
-            slide.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    // Touch and mouse events for swipe functionality
-    function touchStart(event) {
-        startPos = getPositionX(event);
+
+    // --- drag / swipe ---
+    track.addEventListener('mousedown', dragStart);
+    track.addEventListener('touchstart', dragStart, {passive:true});
+    track.addEventListener('mousemove', dragMove);
+    track.addEventListener('touchmove', dragMove, {passive:true});
+    track.addEventListener('mouseup', dragEnd);
+    track.addEventListener('touchend', dragEnd);
+    track.addEventListener('mouseleave', dragEnd);
+
+    function dragStart(e) {
+        startPos = getX(e);
         isDragging = true;
         track.style.cursor = 'grabbing';
         track.style.transition = 'none';
+        animationID = requestAnimationFrame(animation);
     }
-    
-    function touchMove(event) {
+
+    function dragMove(e) {
         if (!isDragging) return;
-        const currentPosition = getPositionX(event);
-        currentTranslate = prevTranslate + currentPosition - startPos;
-        track.style.transform = `translateX(${currentTranslate}px)`;
+        const currentPos = getX(e);
+        currentTranslate = prevTranslate + currentPos - startPos;
     }
-    
-    function touchEnd() {
+
+    function dragEnd() {
+        cancelAnimationFrame(animationID);
         isDragging = false;
         track.style.cursor = 'grab';
-        track.style.transition = 'transform 0.5s ease-in-out';
-        
         const movedBy = currentTranslate - prevTranslate;
-        
+
         if (Math.abs(movedBy) > 100) {
-            if (movedBy < 0) {
-                navigate('next');
-            } else {
-                navigate('prev');
-            }
+            navigate(movedBy < 0 ? 'next' : 'prev');
         } else {
-            updateCarousel();
+            track.style.transition = 'transform 0.5s ease';
+            track.style.transform = `translateX(${prevTranslate}px)`;
         }
-        
-        prevTranslate = currentTranslate;
     }
-    
-    function getPositionX(event) {
-        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+
+    function animation() {
+        track.style.transform = `translateX(${currentTranslate}px)`;
+        if (isDragging) requestAnimationFrame(animation);
     }
-    
-    // Event listeners
-    track.addEventListener('mousedown', touchStart);
-    track.addEventListener('touchstart', touchStart);
-    track.addEventListener('mousemove', touchMove);
-    track.addEventListener('touchmove', touchMove);
-    track.addEventListener('mouseup', touchEnd);
-    track.addEventListener('touchend', touchEnd);
-    track.addEventListener('mouseleave', touchEnd);
-    
-    // Initialize
-    setupCarousel();
+
+    function getX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    // --- autoplay ---
+    let autoPlayTimer = setInterval(() => navigate('next'), 5000);
+    container.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
+    container.addEventListener('mouseleave', () => autoPlayTimer = setInterval(() => navigate('next'), 5000));
+
+    // --- keyboard navigation ---
+    container.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') navigate('prev');
+        if (e.key === 'ArrowRight') navigate('next');
+    });
+
+    // --- resize ---
+    window.addEventListener('resize', updateCarousel);
+
+    // --- init ---
     updateCarousel();
-    
-    // Auto-play (optional)
-    const autoPlayInterval = 5000; // 5 seconds
-    let autoPlayTimer = setInterval(() => navigate('next'), autoPlayInterval);
-    
-    // Pause auto-play on hover
-    container.addEventListener('mouseenter', () => {
-        clearInterval(autoPlayTimer);
-    });
-    
-    container.addEventListener('mouseleave', () => {
-        autoPlayTimer = setInterval(() => navigate('next'), autoPlayInterval);
-    });
-    
-    // Handle resize
-    window.addEventListener('resize', () => {
-        updateCarousel();
-    });
 }
