@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billing - Rare Sheep Studios</title>
     <meta name="description" content="Billing and payment information for Rare Sheep Studios merchandise and services.">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.png">
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="css/billing.css">
 </head>
@@ -12,7 +13,9 @@
     <!-- Header / Navigation -->
     <header id="header">
         <div class="logo" role="banner">
-            <a href="../../../index.html" aria-label="Rare Sheep Studios Home">🐑</a>
+            <a href="../../../index.html" aria-label="Rare Sheep Studios Home">
+                <img src="../../../content/mainsite/assets/image/sheepwhite.png" alt="Stylized white sheep logo representing Rare Sheep Studios" style="height:50px; width:auto; max-width:100px;">
+            </a>
         </div>
         <nav role="navigation" aria-label="Main navigation">
             <a href="../../../index.html#projects" aria-label="View our projects">projects</a>
@@ -92,10 +95,18 @@
             <div class="footer-section">
                 <h3>newsletter</h3>
                 <p>stay updated with our latest projects and merch drops!</p>
-                <form class="newsletter-form" aria-label="Newsletter signup">
-                    <input type="email" placeholder="enter your email" aria-label="Email address" required>
-                    <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">subscribe</button>
-                </form>
+                <div class="newsletter-form" role="complementary" aria-label="Newsletter subscription">
+                    <iframe 
+                        title="Rare Sheep Studios Newsletter Signup"
+                        src="https://raresheepstudios.substack.com/embed" 
+                        width="480" 
+                        height="150" 
+                        style="border:1px solid var(--accent-gray); background:var(--tertiary-black);" 
+                        frameborder="0" 
+                        scrolling="no"
+                        loading="lazy">
+                    </iframe>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">

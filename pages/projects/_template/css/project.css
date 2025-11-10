@@ -1,4 +1,7 @@
-/* elrb.css - ELRB Project Page Specific Styles */
+/*placeholder CSS - template page, dont edit this pls, thanks*/
+/*this 4chan thread needs a hero!*/
+/*GTFO, NEVER MENTION THAT AGAIN*/
+/*dont make me check the git edit history just to find out who wrote that*/
 
 /* Hero Section */
 #hero {
@@ -20,7 +23,7 @@
     left: 0;
     width: 100%;
     height: calc(100vh - 80px);
-    background-image: url('/content/ELRB/assets/image/branding/ELRBLogoBackgroundOnly.jpg');
+    background-image: url('/content/mainsite/assets/image/placeholderraresheep.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -797,7 +800,7 @@
 }
 
 .showcase-item:hover {
-    border-color: var(--text-white);
+    border-color: var(--holdout-text-white);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }

@@ -1,4 +1,4 @@
-// FRACTURED.js - fractured Project Page Specific JavaScript
+// placeholder.js - placeholder Project Page Specific JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     initCarousel();

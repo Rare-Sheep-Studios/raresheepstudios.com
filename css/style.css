@@ -9,7 +9,7 @@
     --light-gray: #888888;
     --text-white: #ffffff;
     --accent-white: #ffffff;
-    --accent-green: #00ff88;
+    --accent-green: #ffff;
     --border-radius: 8px;
     --transition: all 0.2s ease;
     --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -500,36 +500,29 @@ h2::after {
 /* Newsletter Form */
 .newsletter-form {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
     margin-top: 1rem;
-    flex-wrap: wrap;
 }
 
-.newsletter-form input {
-    flex: 1;
-    min-width: 200px;
-    padding: 0.75rem;
-    border: 1px solid var(--accent-gray);
+.newsletter-form iframe {
+    max-width: 100%;
     border-radius: var(--border-radius);
-    background: var(--tertiary-black);
-    color: var(--text-white);
-    font-size: 1rem;
+    background: var(--tertiary-black) !important;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
 }
 
-.newsletter-form input:focus {
-    outline: none;
-    border-color: var(--accent-green);
-    box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
+.newsletter-form iframe:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
 }
 
-.newsletter-form input::placeholder {
-    color: var(--light-gray);
-}
-
-.newsletter-form .btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-    white-space: nowrap;
+@media (max-width: 768px) {
+    .newsletter-form iframe {
+        width: 100% !important;
+        height: 170px !important;
+    }
 }
 
 /* Footer */

@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRACTURED | Rare Sheep Studios</title>
-    <meta name="description" content="FRACTURED — A psychological horror experience following Kai Mercer as he struggles to navigate reality, memory, and the cold winter streets of a city that feels just slightly wrong.">
+    <meta name="description" content="placeholder">
+    <link rel="icon" type="image/x-icon" href="../../../favicon.png">
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="css/fractured.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
     <!-- Header / Navigation -->
     <header id="header">
         <div class="logo" role="banner">
-            <a href="../../../index.html" aria-label="Rare Sheep Studios Home">🐑</a>
+            <a href="../../../index.html" aria-label="Rare Sheep Studios Home">
+                <img src="../../../content/mainsite/assets/image/sheepwhite.png" alt="Stylized white sheep logo representing Rare Sheep Studios" style="height:50px; width:auto; max-width:100px;">
+            </a>
         </div>
         <nav role="navigation" aria-label="Main navigation">
             <a href="../../../index.html#projects" aria-label="View our projects">projects</a>
@@ -29,14 +33,15 @@
 
     <!-- Hero Section -->
     <section id="hero" role="banner">
-        <div class="hero-background fractured-bg"></div>
+        <div class="hero-background"></div> <!-- background only -->
     
         <div class="hero-content">
             <div class="logo-container">
-                <h1 class="hero-text-logo">FRACTURED</h1>
+                <img src="../../../content/mainsite/assets/image/placeholder.png" 
+                     alt="placeholder" class="hero-text-logo">
             </div>
-            <p class="hero-subtitle">a psychological horror story</p>
-            <p class="hero-description">snow blankets the city, but something is breaking beneath the surface.</p>
+            <p class="hero-subtitle">placeholder</p>
+            <p class="hero-description">placeholder</p>
         </div>
     
         <div class="scroll-indicator">
@@ -44,45 +49,70 @@
             <span>scroll to explore</span>
         </div>
     </section>
+    
+    
 
-    <!-- About This Game Section -->
-    <section id="about-game" role="region" aria-labelledby="about-heading">
-        <div class="about-container">
-            <div class="about-content">
-                <h2 id="about-heading">about this game</h2>
-                <div class="about-text">
-                    <p><strong>FRACTURED</strong> follows <em>Kai Mercer</em>, a young man recently released from a psychiatric hospital. He steps into the snow-covered streets of his city during the holiday season — but the world isn’t quite right.</p>
+<!-- About This Game Section -->
+<section id="about-game" role="region" aria-labelledby="about-heading">
+    <div class="about-container">
+        <div class="about-content">
+            <h2 id="about-heading">about this game</h2>
+            <div class="about-text">
+                   <p><strong>FRACTURED</strong> follows <em>Kai Mercer</em>, a young man recently released from a psychiatric hospital. He steps into the snow-covered streets of his city during the holiday season — but the world isn’t quite right.</p>
                     <p>At first glance, it’s normal. But lights flicker. Music distorts. Faces blur. As Kai’s perception unravels, so does the line between reality and hallucination.</p>
                     <p>Can you trust what you see? Can Kai? Or will the snow swallow him whole?</p>
-                </div>
-            </div>
-            <div class="support-card">
-                <h3>support the game!</h3>
-                <div class="plushie-model">
-                    <div class="model-placeholder">poster/merch placeholder</div>
-                </div>
-                <p>grab exclusive FRACTURED merch and help us fund the project</p>
-                <a href="../../../index.html#merch" class="btn btn-primary">shop now!</a>
             </div>
         </div>
-    </section>
+        <div class="support-card">
+            <h3>support the game!</h3>
+            <div class="plushie-model">
+                <model-viewer src="../../../content/ELRB/assets/3dmodel/error_text.glb"
+                              alt="Plushie TBD"
+                              auto-rotate
+                              camera-controls
+                              background-color="#ffffff"
+                              style="width: 300px; height: 300px;">
+                </model-viewer>
+                <!-- yes that error_text thing is the gmod error thing, idk im bored and need a placeholder-->
+            </div>
+            <p>grab exclusive FRACTURED merch and help us fund the project</p>
+            <a href="../../../index.html#merch" class="btn btn-primary">shop now!</a>
+        </div>
+    </div>
+</section>
+
 
     <!-- Image Carousel Section -->
     <section id="image-carousel" role="region" aria-labelledby="carousel-heading">
-        <h2 id="carousel-heading">concept art & teasers</h2>
+        <h2 id="carousel-heading">game screenshots</h2>
         <div class="carousel-container">
             <div class="carousel-wrapper">
                 <div class="carousel-track" id="carousel-track">
                     <div class="carousel-slide active">
-                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Game concept art 1" class="carousel-image">
+                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="placeholder" class="carousel-image">
                     </div>
                     <div class="carousel-slide">
-                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Game concept art 2" class="carousel-image">
+                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="placeholder" class="carousel-image">
                     </div>
                     <div class="carousel-slide">
-                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Game concept art 3" class="carousel-image">
+                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="placeholder" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="placeholder" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="../../../content/mainsite/assets/image/placeholder.png" alt="placeholder" class="carousel-image">
                     </div>
                 </div>
+                <button class="carousel-nav carousel-prev" aria-label="Previous image">‹</button>
+                <button class="carousel-nav carousel-next" aria-label="Next image">›</button>
+            </div>
+            <div class="carousel-dots">
+                <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+                <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+                <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>
+                <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>
             </div>
         </div>
     </section>
@@ -100,7 +130,7 @@
             </div>
             <div class="info-item">
                 <div class="info-icon creator-pfp">
-                    <img src="/content/ELRB/assets/image/VisSharkDiscordPFP.jpg" alt="Creator Profile Picture" class="creator-image">
+                    <img src="/content/mainsite/assets/image/people/VisSharkDiscordPFP.jpg" alt="Creator Profile Picture" class="creator-image">
                 </div>
                 <div class="info-content">
                     <h4>creator(s)</h4>
@@ -124,20 +154,20 @@
         </div>
     </aside>
 
-    <!-- Showcase Section -->
+        <!-- Middle Showcase Section -->
     <section id="showcase" role="region" aria-labelledby="showcase-heading">
         <h2 id="showcase-heading">character & environment showcase</h2>
         <div class="showcase-content">
             <div class="showcase-item">
-                <div class="showcase-image">
-                    <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Kai Mercer character showcase" class="showcase-img">
+                <div class="showcase-placeholder">
+                    <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Kai Mercer">
                 </div>
                 <h3>Kai Mercer</h3>
                 <p>the world is breaking, but is it the city or his mind?</p>
             </div>
             <div class="showcase-item">
-                <div class="showcase-image">
-                    <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Snowy town environment showcase" class="showcase-img">
+                <div class="showcase-placeholder">
+                    <img src="../../../content/mainsite/assets/image/placeholder.png" alt="Dynamic Environments">
                 </div>
                 <h3>the town</h3>
                 <p>streets lined with christmas lights — comforting, or uncanny?</p>
@@ -152,10 +182,10 @@
                 <h3>rare sheep studios</h3>
                 <p>creating worlds, one black & white sheep at a time. join us on our journey through chaos and innovation.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Follow us on Twitter" title="Twitter">🐦</a>
-                    <a href="#" aria-label="Follow us on Discord" title="Discord">💬</a>
-                    <a href="#" aria-label="Follow us on GitHub" title="GitHub">🐙</a>
-                    <a href="#" aria-label="Follow us on YouTube" title="YouTube">📺</a>
+                    <a href="https://twitter.com/RareSheepStudio" aria-label="Follow us on Twitter" title="Twitter">🐦</a>
+                    <a href="https://discord.gg/" aria-label="Follow us on Discord" title="Discord">💬</a>
+                    <a href="https://github.com/Rare-Sheep-Studios" aria-label="Follow us on GitHub" title="GitHub">🐙</a>
+                    <a href="https://www.youtube.com/@RareSheepStudios" aria-label="Follow us on YouTube" title="YouTube">📺</a>
                 </div>
             </div>
             <div class="footer-links">
@@ -172,7 +202,7 @@
                         <li><a href="../../../../index.html#about">about us</a></li>
                         <li><a href="../../../../index.html#projects">projects</a></li>
                         <li><a href="../../../../pages/mainsite/stuff/jobs/jobs.html">jobs</a></li>
-                        <li><a href="../../../../pages/mainsite/stuff/publications/publications.html">publications</a></li>
+                        <li><a href="https://blogs.raresheepstudios.com">publications</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -187,10 +217,18 @@
                 <div class="footer-section">
                     <h3>newsletter</h3>
                     <p>stay updated with our latest projects and merch drops!</p>
-                    <form class="newsletter-form" aria-label="Newsletter signup">
-                        <input type="email" placeholder="enter your email" aria-label="Email address" required>
-                        <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">subscribe</button>
-                    </form>
+                    <div class="newsletter-form" role="complementary" aria-label="Newsletter subscription">
+                        <iframe 
+                            title="Rare Sheep Studios Newsletter Signup"
+                            src="https://raresheepstudios.substack.com/embed" 
+                            width="480" 
+                            height="150" 
+                            style="border:1px solid var(--accent-gray); background:var(--tertiary-black);" 
+                            frameborder="0" 
+                            scrolling="no"
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>

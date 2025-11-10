@@ -4,8 +4,8 @@
 :root{
   --carousel-gap: 1.5rem;
   --btn-size: clamp(40px, 4.5vw, 56px);
-  --accent-green: #00ff88;
-  --accent-gray: #9aa0a6;
+  --accent-green: #ffff;
+  --accent-gray: rgba(51, 51, 51, 0.75);
   --bg-btn: rgba(34,34,34,0.75);
   --text-white: #ffffff;
   --slide-shadow: 0 4px 20px rgba(0,0,0,0.15);
