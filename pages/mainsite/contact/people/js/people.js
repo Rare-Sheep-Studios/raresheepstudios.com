@@ -55,6 +55,10 @@ function initSearchAnimation() {
     searchInput.addEventListener('blur', () => {
         searchInput.parentElement.classList.remove('focused');
     });
+        // Add input event listener to trigger search when user types
+    searchInput.addEventListener('input', () => {
+        searchPeople();
+    });
 }
 
 function toggleBio(id) {
