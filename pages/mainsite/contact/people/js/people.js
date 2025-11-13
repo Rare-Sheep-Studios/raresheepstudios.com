@@ -55,12 +55,8 @@ function initSearchAnimation() {
     searchInput.addEventListener('blur', () => {
         searchInput.parentElement.classList.remove('focused');
     });
-<<<<<<< HEAD
-        // Add input event listener to trigger search when user types
-=======
     
     // Add input event listener to trigger search when user types
->>>>>>> 84d62bd (work PLSSSS)
     searchInput.addEventListener('input', () => {
         searchPeople();
     });
