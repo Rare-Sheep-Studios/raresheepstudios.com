@@ -337,12 +337,6 @@ Keyboard:    ✓ Full navigation support
 
 ## 🎓 What You Can Do Next
 
-### Easy Wins
-- [ ] Add social links to current team members
-- [ ] Add banner images to current team members
-- [ ] Change accent color via CSS variable
-- [ ] Adjust modal width or height
-
 ### Medium Complexity
 - [ ] Create custom banner image templates
 - [ ] Add animation delays between profiles
