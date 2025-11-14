@@ -5,12 +5,12 @@
 Creates short, memorable URLs for your projects that redirect to the full project pages:
 
 ```
-raresheepstudios.com/elrb          → /pages/projects/elrb/elrb.html
-raresheepstudios.com/fractured     → /pages/projects/fractured/fractured.html
-raresheepstudios.com/holdout       → /pages/projects/holdout/holdout.html
-raresheepstudios.com/skybreak      → /pages/projects/skybreak/skybreak.html
-raresheepstudios.com/wool-and-dice → /pages/projects/wool&dice/index.html
-raresheepstudios.com/netknights    → /pages/projects/netknightscsc/index.html
+raresheepstudios.com/r/elrb          → /pages/projects/elrb/elrb.html
+raresheepstudios.com/r/fractured     → /pages/projects/fractured/fractured.html
+raresheepstudios.com/r/holdout       → /pages/projects/holdout/holdout.html
+raresheepstudios.com/r/skybreak      → /pages/projects/skybreak/skybreak.html
+raresheepstudios.com/r/wool-and-dice → /pages/projects/wool&dice/index.html
+raresheepstudios.com/r/netknights    → /pages/projects/netknightscsc/index.html
 ```
 
 Perfect for:
@@ -24,7 +24,7 @@ Perfect for:
 
 For projects that are still being built, use:
 ```
-raresheepstudios.com/under-construction
+raresheepstudios.com/r/under-construction
 ```
 
 Shows:
