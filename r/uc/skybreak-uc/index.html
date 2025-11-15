@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skybreak // Access Restricted</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #1a1a1a; /* deep black-grey */
+            color: #f5e8c7; /* cream text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .construction-container {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            max-width: 700px;
+            padding: 2rem;
+            border: 1px solid #a66a00; /* copper border */
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(3px);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #c5a200; /* gold header */
+            animation: flicker 4s infinite;
+            text-transform: uppercase;
+        }
+
+        .message {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #f5e8c7;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.6;
+            animation: flicker 6s infinite;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: #1a1a1a;
+            color: #f5e8c7;
+            text-decoration: none;
+            border: 1px solid #8d0000; /* red warning border */
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+        }
+
+        .back-link:hover {
+            border-color: #c5a200; /* gold glow */
+            box-shadow: 0 0 10px #c5a20050;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glitch {
+            0% { transform: none; }
+            20% { transform: translateX(-2px) skewX(3deg); }
+            21% { transform: none; }
+            40% { transform: translateX(3px) skewX(-4deg); }
+            41% { transform: none; }
+            70% { transform: translateX(-1px) skewX(2deg); }
+            71% { transform: none; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            5% { opacity: 0.5; }
+            10% { opacity: 1; }
+            15% { opacity: 0.3; }
+            20% { opacity: 1; }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .construction-container {
+                padding: 2rem;
+            }
+
+            .message {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-container">
+        <h1>Skybreak // Classified</h1>
+        <p class="message">
+            Clearance mismatch detected.<br>
+            This node contains material not suitable for non-government eyes.<br><br>
+
+            Partial logs from Project Skybreak were recovered following the 
+            <i>Orbital Blackout Event (OBE)</i> — however, decryption remains incomplete.<br><br>
+
+            Until the Haven Expanse Relay stabilizes, civilian access is suspended.<br>
+            Return once stellar conditions are deemed <i>cooperative</i>.
+        </p>
+        <a href="/" class="back-link">← return</a>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="/content/skybreak/assets/video/Outer.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        audio.volume = 0.3;
+        
+        audio.play().catch(() => {
+            document.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
