@@ -139,7 +139,7 @@ class ProfileModal {
         document.getElementById('profile-picture').alt = personName;
         
         // Use a placeholder banner or generate one (you can add data attributes later)
-        const bannerSrc = cardElement.getAttribute('data-banner') || '../../../../content/mainsite/assets/image/placeholder.png';
+        const bannerSrc = cardElement.getAttribute('data-banner') || '../../../../content/mainsite/assets/image/placeholderraresheep.png';
         document.getElementById('profile-banner-img').src = bannerSrc;
         
         document.getElementById('profile-name').textContent = personName;
