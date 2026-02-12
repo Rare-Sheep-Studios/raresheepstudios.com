@@ -338,44 +338,14 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2021-2025 rare sheep studios. all rights reserved. | made with 🐑 and chaos</p>
+            <p>&copy; 2021-2026 rare sheep studios. all rights reserved. | made with 🐑 and chaos</p>
             <div class="footer-sheep" aria-label="Bouncing sheep emoji">🐑</div>
         </div>
     </footer>
     
-        <!-- Admin Panel (Hidden - Access via console or add ?admin=true to URL) -->
- <!--       
-    <div id="admin-panel" style="display: none; position: fixed; top: 20px; right: 20px; background: var(--secondary-black); padding: 20px; border-radius: 8px; border: 1px solid var(--accent-gray); z-index: 10000; max-width: 300px;">
-        <h3 style="color: var(--text-white); margin-bottom: 15px;">Newsletter Admin</h3>
-        <p id="subscriber-count" style="color: var(--light-gray); margin-bottom: 15px;">Subscribers: 0</p>
-        <button onclick="exportNewsletterSubscribers()" style="background: var(--accent-green); color: var(--primary-black); border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 10px;">Export CSV</button>
-        <button onclick="document.getElementById('admin-panel').style.display='none'" style="background: var(--accent-gray); color: var(--text-white); border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Close</button>
-    </div>
--->
 
     <script src="js/main.js"></script>
     <script src="js/carousel.js"></script>
- <!--   <script>
-        // Show admin panel if ?admin=true is in URL
-        if (window.location.search.includes('admin=true')) {
-            document.getElementById('admin-panel').style.display = 'block';
-            updateSubscriberCount();
-        }
-        
-        function updateSubscriberCount() {
-            const count = getAllSubscribers().length;
-            document.getElementById('subscriber-count').textContent = `Subscribers: ${count}`;
-        }
-        
-        // Update count when new subscribers are added
-        const originalStoreNewsletterEmail = storeNewsletterEmail;
-        storeNewsletterEmail = function(email) {
-            originalStoreNewsletterEmail(email);
-            if (document.getElementById('admin-panel').style.display !== 'none') {
-                updateSubscriberCount();
-            }
-        };
-    </script> yeah no this is just a security risk, nuhuh nope dont fucking do this, WHO EVEN ADDED THIS - netknights CSC SEC Division -->
     </div>
 </body>
 </html>
